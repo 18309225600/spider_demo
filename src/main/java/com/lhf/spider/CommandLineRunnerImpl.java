@@ -39,7 +39,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         String htmlContent = download.getHtmlContent();
         HtmlCleaner htmlCleaner = new HtmlCleaner();
         TagNode clean = htmlCleaner.clean(htmlContent);
-        Object[] objects = clean.evaluateXPath("//*[@id=\"1829\"]");
+        Object[] objects = clean.evaluateXPath("/html/body/section/div/div/main");
         if (objects.length>0){
             System.out.println(((TagNode)objects[0]).getText().toString());
         }
