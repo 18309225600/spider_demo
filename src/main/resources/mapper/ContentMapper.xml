@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhf.spider.dao.ContentMapper">
+  <resultMap id="BaseResultMap" type="com.lhf.spider.entity.po.Content">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="favorite_num" jdbcType="BIGINT" property="favoriteNum" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="html_content" jdbcType="LONGVARCHAR" property="htmlContent" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from demo_content
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lhf.spider.entity.po.Content">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into demo_content (title, date, favorite_num, 
+      type, tag, created_at, 
+      updated_at, deleted_at, content, 
+      html_content)
+    values (#{title,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, #{favoriteNum,jdbcType=BIGINT}, 
+      #{type,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{deletedAt,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}, 
+      #{htmlContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lhf.spider.entity.po.Content">
+    update demo_content
+    set title = #{title,jdbcType=VARCHAR},
+      date = #{date,jdbcType=DATE},
+      favorite_num = #{favoriteNum,jdbcType=BIGINT},
+      type = #{type,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR},
+      html_content = #{htmlContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, title, date, favorite_num, type, tag, created_at, updated_at, deleted_at, 
+    content, html_content
+    from demo_content
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, title, date, favorite_num, type, tag, created_at, updated_at, deleted_at, 
+    content, html_content
+    from demo_content
+  </select>
+  <resultMap id="BaseResultMap" type="com.lhf.spider.entity.po.Content">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="favorite_num" jdbcType="BIGINT" property="favoriteNum" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from demo_content
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lhf.spider.entity.po.Content">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into demo_content (title, date, favorite_num, 
+      type, tag, created_at, 
+      updated_at, deleted_at, content
+      )
+    values (#{title,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, #{favoriteNum,jdbcType=BIGINT}, 
+      #{type,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{deletedAt,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lhf.spider.entity.po.Content">
+    update demo_content
+    set title = #{title,jdbcType=VARCHAR},
+      date = #{date,jdbcType=DATE},
+      favorite_num = #{favoriteNum,jdbcType=BIGINT},
+      type = #{type,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, title, date, favorite_num, type, tag, created_at, updated_at, deleted_at, 
+    content
+    from demo_content
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, title, date, favorite_num, type, tag, created_at, updated_at, deleted_at, 
+    content
+    from demo_content
+  </select>
+</mapper>
